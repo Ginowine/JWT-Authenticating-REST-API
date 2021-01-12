@@ -28,7 +28,12 @@ public class User {
 	@JsonIgnore
     private Cart cart;
 
-	
+	public User(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+
+
 	public Cart getCart() {
 		return cart;
 	}
