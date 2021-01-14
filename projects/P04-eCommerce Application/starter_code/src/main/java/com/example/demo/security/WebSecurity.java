@@ -45,7 +45,6 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         auth.parentAuthenticationManager(authenticationManagerBean())
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(bCryptPasswordEncoder);
-        //auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
     }
 
 }
