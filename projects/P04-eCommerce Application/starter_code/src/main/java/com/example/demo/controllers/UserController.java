@@ -30,6 +30,10 @@ public class UserController {
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 	}
 
+	public UserController(){
+
+	}
+
 
 	@GetMapping("/id/{id}")
 	public ResponseEntity<User> findById(@PathVariable Long id) {
@@ -48,15 +52,18 @@ public class UserController {
 		User user = new User();
 		user.setUsername(createUserRequest.getUsername());
 		Cart cart = new Cart();
-		cartRepository.save(cart);
-		user.setCart(cart);
+
 		if (createUserRequest.getPassword().length() < 7 ||
 				!createUserRequest.getPassword().equals(createUserRequest.getConfirmPassword())){
 			//logger.error("error with user password. cannot create user{}", createUserRequest.getUsername());
 			return ResponseEntity.badRequest().build();
 		}
 		user.setPassword(bCryptPasswordEncoder.encode(createUserRequest.getPassword()));
+
+		user.setCart(cart);
 		userRepository.save(user);
+		cartRepository.save(cart);
+
 		return ResponseEntity.ok(user);
 	}
 }
