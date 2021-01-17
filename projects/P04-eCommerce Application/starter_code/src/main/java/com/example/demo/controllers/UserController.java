@@ -61,6 +61,7 @@ public class UserController {
 			return ResponseEntity.badRequest().build();
 		}
 		user.setPassword(bCryptPasswordEncoder.encode(createUserRequest.getPassword()));
+		logger.info("User password set", createUserRequest.getPassword());
 
 		user.setCart(cart);
 		userRepository.save(user);
