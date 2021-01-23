@@ -69,4 +69,8 @@ public class UserController {
 
 		return ResponseEntity.ok(user);
 	}
+
+	public void checking(){
+	    System.out.println("Just checking");
+    }
 }
